@@ -15,7 +15,11 @@ blocks:
             - ls -la
             - echo 'export LT_USERNAME='sirajk'' >> .bashrc
             - echo 'export LT_ACCESS_KEY='oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0'' >> .bashrc
-      env_vars: []
+      env_vars:
+        - name: FOO_1
+          value: BAR_1
+      secrets:
+        - name: lambdatestAuth
     dependencies: []
   - name: Set Tunnel
     task:
