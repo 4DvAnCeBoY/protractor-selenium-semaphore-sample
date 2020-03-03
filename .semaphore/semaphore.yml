@@ -38,7 +38,7 @@ blocks:
             - checkout
             - cd /home/semaphore/protractor-selenium-semaphore-sample
             - npm install
+            - export
             - node node_modules/protractor/bin/protractor single.conf.js
     dependencies:
-      - Set Env Variables
       - Set Tunnel
