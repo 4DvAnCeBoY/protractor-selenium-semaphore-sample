@@ -49,5 +49,10 @@ blocks:
             - npm install
             - export
             - node node_modules/protractor/bin/protractor single.conf.js
+      env_vars:
+        - name: LT_USERNAME
+          value: sirajk
+        - name: LT_ACCESS_KEY
+          value: oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
     dependencies:
       - Set Tunnel
