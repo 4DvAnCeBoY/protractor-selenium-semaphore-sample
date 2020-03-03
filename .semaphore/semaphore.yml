@@ -11,12 +11,10 @@ blocks:
     task:
       jobs:
         - name: NODE_ENV
-          commands: []
-      env_vars:
-        - name: LT_USERNAME
-          value: sirajk
-        - name: LT_ACCESS_KEY
-          value: oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
+          commands:
+            - ls -al
+            - echo 'export LT_USERNAME='Your LambdaTest UserName'' >> .bashrc
+            - echo 'export LT_ACCESS_KEY='Your LambdaTest Access Key'' >> .bashrc
   - name: Set Tunnel
     task:
       jobs:
