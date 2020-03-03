@@ -11,13 +11,13 @@ blocks:
     task:
       jobs:
         - name: NODE_ENV
-          commands:
-            - ls -al
+          commands: []
       env_vars:
         - name: LT_USERNAME
           value: sirajk
         - name: LT_ACCESS_KEY
           value: oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
+    dependencies: []
   - name: Set Tunnel
     task:
       jobs:
@@ -29,6 +29,8 @@ blocks:
             - sudo apt-get install unzip
             - unzip LT_Linux.zip
             - './LT -user ${LT_USERNAME} -key ${LT_ACCESS_KEY} & sleep 30'
+    dependencies:
+      - Set Env Variables
   - name: Run Tests
     task:
       jobs:
@@ -38,3 +40,6 @@ blocks:
             - cd /home/semaphore/protractor-selenium-semaphore-sample
             - npm install
             - node node_modules/protractor/bin/protractor single.conf.js
+    dependencies:
+      - Set Env Variables
+      - Set Tunnel
