@@ -1,13 +1,42 @@
 version: v1.0
-name: Initial Pipeline
+name: Run Protractor Test In LambdaTest
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
+execution_time_limit:
+  hours: 3
 blocks:
-  - name: 'Block #1'
+  - name: Set Env Variables
     task:
       jobs:
-        - name: 'Job #1'
+        - name: NODE_ENV
+          commands:
+            - ls -al
+            - echo 'export LT_USERNAME='Your LambdaTest UserName'' >> .bashrc
+            - echo 'export LT_ACCESS_KEY='Your LambdaTest Access Key'' >> .bashrc
+      env_vars:
+        - name: LT_USERNAME
+          value: sirajk
+        - name: LT_ACCESS_KEY
+          value: oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
+  - name: Set Tunnel
+    task:
+      jobs:
+        - name: Download and install tunnel
           commands:
             - checkout
+            - cd /home/semaphore/protractor-selenium-semaphore-sample
+            - 'wget http://downloads.lambdatest.com/tunnel/linux/64bit/LT_Linux.zip'
+            - sudo apt-get install unzip
+            - unzip LT_Linux.zip
+            - './LT -user ${LT_USERNAME} -key ${LT_ACCESS_KEY} & sleep 30'
+  - name: Run Tests
+    task:
+      jobs:
+        - name: Run Protractor
+          commands:
+            - checkout
+            - cd /home/semaphore/protractor-selenium-semaphore-sample
+            - npm install
+            - node node_modules/protractor/bin/protractor single.conf.js
