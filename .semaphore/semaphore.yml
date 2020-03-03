@@ -39,6 +39,9 @@ blocks:
       jobs:
         - name: Run Protractor
           commands:
+            - ls -la
+            - echo 'export LT_USERNAME='sirajk'' >> .bashrc
+            - echo 'export LT_ACCESS_KEY='oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0'' >> .bashrc
             - checkout
             - cd /home/semaphore/protractor-selenium-semaphore-sample
             - npm install
