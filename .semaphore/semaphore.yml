@@ -11,12 +11,11 @@ blocks:
     task:
       jobs:
         - name: NODE_ENV
-          commands: []
-      env_vars:
-        - name: LT_USERNAME
-          value: sirajk
-        - name: LT_ACCESS_KEY
-          value: oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0
+          commands:
+            - ls -la
+            - echo 'export LT_USERNAME='sirajk'' >> .bashrc
+            - echo 'export LT_ACCESS_KEY='oz85RZKxbqX6X8aCQXuQgUDnojP8OwY3wx2SAkEswtgRuxl8n0'' >> .bashrc
+      env_vars: []
     dependencies: []
   - name: Set Tunnel
     task:
