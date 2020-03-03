@@ -13,8 +13,6 @@ blocks:
         - name: NODE_ENV
           commands:
             - ls -al
-            - echo 'export LT_USERNAME='Your LambdaTest UserName'' >> .bashrc
-            - echo 'export LT_ACCESS_KEY='Your LambdaTest Access Key'' >> .bashrc
       env_vars:
         - name: LT_USERNAME
           value: sirajk
